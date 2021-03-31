@@ -1,0 +1,20 @@
+{
+  "name": "Radu's addon",
+  "version": "0.1.2",
+  "slug": "radu_addon",
+  "description": "This is Radu's addon",
+  "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
+  "startup": "application",
+  "boot": "auto",
+  "options": {
+    "name": "",
+    "year": null
+  },
+  "schema": {
+    "name": "str",
+    "year": "int"
+  },
+  "ports": {
+    "9123/tcp": 9123
+  }
+}
