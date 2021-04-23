@@ -2,7 +2,7 @@
   "name": "Express web server",
   "version": "0.0.2",
   "slug": "express-server",
-  "description": "This is Radu's addon",
+  "description": "An expressjs server for hassio",
   "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
   "map": ["share:rw"],
   "startup": "application",
