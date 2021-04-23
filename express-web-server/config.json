@@ -1,0 +1,22 @@
+{
+  "name": "Express web server",
+  "version": "0.0.2",
+  "slug": "express-server",
+  "description": "This is Radu's addon",
+  "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
+  "map": ["share:rw"],
+  "startup": "application",
+  "boot": "auto",
+  "options": {
+    "page_folder_path": "/share/express/"
+  },
+  "schema": {
+    "page_folder_path": "str"
+  },
+  "ports": {
+    "80/tcp": 80
+  },
+  "ports_description": {
+    "80/tcp": "Port for web interface"
+  }
+}
