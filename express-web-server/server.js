@@ -1,7 +1,9 @@
 const express = require('express')
 const app = express()
 const {readFileSync: rfs, existsSync} = require('fs')
+const server=require('http').Server(app)
 const path=process.argv[2]
+const external=process.argv[3]
 console.log(`Web dir is ${path}`)
 
 app.use((req, res, next) =>{
@@ -30,4 +32,7 @@ app.get('/:page', (req, res) =>{
 })
 
 console.log('Web server running')
-app.listen(80)
+server.listen(8099)
+if(external==='true'){
+  app.listen(80)
+}

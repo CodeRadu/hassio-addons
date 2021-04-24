@@ -1,17 +1,21 @@
 {
   "name": "Express web server",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "slug": "express-server",
-  "description": "An expressjs server for hassio",
+  "description": "This is Radu's addon",
   "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
   "map": ["share:rw"],
+  "ingress": true,
+  "panel_icon": "mdi:web-box",
   "startup": "application",
   "boot": "auto",
   "options": {
-    "page_folder_path": "/share/express/"
+    "page_folder_path": "/share/express/",
+    "external_access": false
   },
   "schema": {
-    "page_folder_path": "str"
+    "page_folder_path": "str",
+    "external_access": "bool"
   },
   "ports": {
     "80/tcp": 80
