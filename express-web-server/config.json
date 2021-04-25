@@ -1,11 +1,10 @@
 {
   "name": "Express web server",
-  "version": "0.0.6",
+  "version": "0.0.5",
   "slug": "express-server",
   "description": "Express web-server addon",
   "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
   "map": ["share:rw"],
-  "image": "radugmu/image-{arch}-ews",
   "ingress": true,
   "panel_icon": "mdi:web-box",
   "startup": "application",
