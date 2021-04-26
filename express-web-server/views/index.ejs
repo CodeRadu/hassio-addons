@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" integrity="sha512-UJfAaOlIRtdR+0P6C3KUoTDAxVTuy3lnSXLyLKlHYJlcSU8Juge/mjeaxDNMlw9LgeIotgz5FP8eUQPhX1q10A==" crossorigin="anonymous" />
+  <script src="jquery.js" defer></script>
+  <style>
+    .progress {
+      width: 500px !important;
+    }
+    .preloader-back {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(255, 255, 255, .7);
+      position: fixed;
+      z-index: 100;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+  </style>
+  <script src="check.js" defer></script>
+</head>
+<body>
+  <div class="preloader-back">
+    <div class="preloader-wrapper active">
+      <div class="spinner-layer spinner-red-only">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+    Connection lost. Reconnecting..
+</div>
+  <div id="page"></div>
+  <script>
+    const pageDiv=document.querySelector('#page')
+    fetch('expressrawpage<%= path %>').then(res=>res.text()).then(res=>{
+      pageDiv.innerHTML=res
+    })
+    </script>
+</body>
+</html>
