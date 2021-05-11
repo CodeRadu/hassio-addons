@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.1]
+### Removed
+ - Broken ingress
+
 ## [0.1.0]
 ### Added
  - Connection Lost message

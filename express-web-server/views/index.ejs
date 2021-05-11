@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" integrity="sha512-UJfAaOlIRtdR+0P6C3KUoTDAxVTuy3lnSXLyLKlHYJlcSU8Juge/mjeaxDNMlw9LgeIotgz5FP8eUQPhX1q10A==" crossorigin="anonymous" />
-  <script src="jquery.js" defer></script>
+  <script src="/jquery.js" defer></script>
   <style>
     .progress {
       width: 500px !important;
@@ -22,7 +22,7 @@
       bottom: 0;
     }
   </style>
-  <script src="check.js" defer></script>
+  <script src="/check.js" defer></script>
 </head>
 <body>
   <div class="preloader-back">
@@ -42,7 +42,7 @@
   <div id="page"></div>
   <script>
     const pageDiv=document.querySelector('#page')
-    fetch('expressrawpage<%= path %>').then(res=>res.text()).then(res=>{
+    fetch('/expressrawpage<%= path %>').then(res=>res.text()).then(res=>{
       pageDiv.innerHTML=res
     })
     </script>

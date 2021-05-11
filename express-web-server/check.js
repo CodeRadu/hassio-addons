@@ -7,6 +7,6 @@ ping.onerror=()=>{
 ping.onload=()=>{
   $('.preloader-back').fadeOut('slow')
 }
-ping.open('GET', 'ping')
+ping.open('GET', '/ping')
 ping.send()
 }, 10000)

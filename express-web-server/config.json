@@ -5,17 +5,14 @@
   "description": "Express web-server addon",
   "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
   "map": ["share:rw"],
-  "ingress": true,
   "panel_icon": "mdi:web-box",
   "startup": "application",
   "boot": "auto",
   "options": {
-    "page_folder_path": "/share/express/",
-    "external_access": true
+    "page_folder_path": "/share/express/"
   },
   "schema": {
-    "page_folder_path": "str",
-    "external_access": "bool"
+    "page_folder_path": "str"
   },
   "ports": {
     "80/tcp": 80
