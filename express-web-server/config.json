@@ -1,6 +1,6 @@
 {
   "name": "Express web server",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "slug": "express-server",
   "description": "Express web-server addon",
   "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
