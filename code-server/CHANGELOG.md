@@ -2,6 +2,16 @@
 
 VScode in Home Assistant
 
+## [0.1.1] - 2021-01-07
+
+### `Fixed`
+
+- Initial settings not applied
+
+### `Added`
+
+- Web development port
+
 ## [0.1.0] - 2021-01-07
 
 ### `Added`
