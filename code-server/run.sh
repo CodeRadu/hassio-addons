@@ -6,7 +6,9 @@ mkdir -p /config/code-server/local
 mkdir -p /config/code-server/config
 mkdir -p /config/code-server/data
 
-cp /code-server.yaml /config/code-server/config/config.yaml
+if ! test -f /config/code-server/config/config.yaml; then
+  cp /code-server.yaml /config/code-server/config/config.yaml
+fi
 echo This is the only folder that will be saved on the home assistant disk. > /config/code-server/data/readme.txt
 
 ln -s /config/code-server/local /root/.local/share/code-server

@@ -2,6 +2,12 @@
 
 VScode in Home Assistant
 
+## [0.0.5] - 2021-01-07
+
+### `Added`
+
+- Password configuration
+
 ## [0.0.2]
 
 ### `Added`
