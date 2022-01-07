@@ -15,4 +15,8 @@ ln -s /config/code-server/local /root/.local/share/code-server
 ln -s /config/code-server/config /root/.config/code-server
 ln -s /config/code-server/data /root/data
 
+if ! test -f /config/code-server/local/User/settings.json; then
+  echo "{\"workbench.colorTheme\": \"Default Dark+\",\"terminal.integrated.profiles.linux\": {\"bash\": {\"path\": \"bash\",\"icon\": \"terminal-bash\"},\"zsh\": {\"path\": \"zsh\"}},\"terminal.integrated.defaultProfile.linux\": \"zsh\"}" > /config/code-server/local/User/settings.json
+fi
+
 code-server
