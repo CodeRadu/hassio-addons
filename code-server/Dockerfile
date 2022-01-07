@@ -6,6 +6,8 @@ RUN apt install curl -y
 
 RUN curl -fsSL https://code-server.dev/install.sh | sh
 
-COPY code-server.yaml /root/.config/code-server/config.yaml
+COPY run.sh /
+COPY code-server.yaml /
+RUN chmod +x /run.sh
 
-CMD [ "code-server" ]
+CMD [ "/run.sh" ]
