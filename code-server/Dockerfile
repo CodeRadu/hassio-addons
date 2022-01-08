@@ -1,5 +1,7 @@
 FROM ubuntu
 
+LABEL org.opencontainers.image.source https://github.com/coderadu/hassio-addons
+
 RUN apt update
 RUN apt upgrade -y
 RUN apt install curl nano git zsh -y
