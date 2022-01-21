@@ -2,7 +2,13 @@
 
 VScode in Home Assistant
 
-## [0.1.2] - 2021-02-08
+## [0.1.3] - 2021-01-21
+
+### `Added`
+
+- Readme file
+
+## [0.1.2] - 2021-01-08
 
 ### `Added`
 
