@@ -2,6 +2,12 @@
 
 VScode in Home Assistant
 
+## [0.1.5] - 2022-04-07
+
+### `Fixed`
+
+- Permission denied to /root/data
+
 ## [0.1.4] - 2022-04-07
 
 ### `Added`
