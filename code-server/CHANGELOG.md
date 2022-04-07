@@ -2,19 +2,25 @@
 
 VScode in Home Assistant
 
-## [0.1.3] - 2021-01-21
+## [0.1.4] - 2022-04-07
+
+### `Added`
+
+- SSH for VSCode server
+
+## [0.1.3] - 2022-01-21
 
 ### `Added`
 
 - Readme file
 
-## [0.1.2] - 2021-01-08
+## [0.1.2] - 2022-01-08
 
 ### `Added`
 
 - Added pre-built images
 
-## [0.1.1] - 2021-01-07
+## [0.1.1] - 2022-01-07
 
 ### `Fixed`
 
@@ -24,7 +30,7 @@ VScode in Home Assistant
 
 - Web development port
 
-## [0.1.0] - 2021-01-07
+## [0.1.0] - 2022-01-07
 
 ### `Added`
 
@@ -32,7 +38,7 @@ VScode in Home Assistant
 - Git
 - Nvm
 
-## [0.0.5] - 2021-01-07
+## [0.0.5] - 2022-01-07
 
 ### `Added`
 

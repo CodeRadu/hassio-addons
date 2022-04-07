@@ -1,5 +1,12 @@
 #!/usr/bin/bash
 
+/usr/sbin/sshd &
+
+password=$(jq '.userpass' < /data/options.json)
+password=$(sed -e 's/^"//' -e 's/"$//' <<<"$password")
+echo "user:$password" | chpasswd
+echo "The password for 'user' has been set to $password"
+
 mkdir -p /root/.local/share
 mkdir -p /root/.config
 mkdir -p /config/code-server/local
