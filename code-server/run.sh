@@ -30,6 +30,7 @@ if ! test -f /config/code-server/local/User/settings.json; then
   echo "{\"workbench.colorTheme\": \"Default Dark+\",\"terminal.integrated.profiles.linux\": {\"bash\": {\"path\": \"bash\",\"icon\": \"terminal-bash\"},\"zsh\": {\"path\": \"zsh\"}},\"terminal.integrated.defaultProfile.linux\": \"zsh\"}" > /config/code-server/local/User/settings.json
 fi
 
+chmod a+rwx /root/*
 chmod a+rwx /root/data
 chmod a+rwx /root/data/*
 
