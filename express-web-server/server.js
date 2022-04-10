@@ -50,7 +50,4 @@ app.use('/', (req, res)=>{
 
 
 console.log('Web server running')
-server.listen(8099)
-if(external==='true'){
-  app.listen(80)
-}
+app.listen(80)
