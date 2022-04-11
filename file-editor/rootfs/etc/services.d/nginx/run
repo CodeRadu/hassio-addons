@@ -1,0 +1,15 @@
+#!/usr/bin/with-contenv bashio
+# shellcheck shell=bash
+
+if ! test -f /var/run/editor.lock; then
+  bashio::log.info "Waiting for File Editor to start"
+fi
+
+while ! test -f /var/run/editor.lock; do
+  sleep 0.5
+done
+
+bashio::log.info "File editor started"
+bashio::log.info "Starting NGINX"
+
+exec nginx

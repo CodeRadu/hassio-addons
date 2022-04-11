@@ -1,0 +1,7 @@
+#!/usr/bin/with-contenv bashio
+# shellcheck shell=bash
+echo "-----------Welcome to File Editor-----------"
+echo "Addon created by: coderadu"
+echo "https://github.com/CodeRadu/hassio-addons/tree/main/file-editor"
+echo "Here you will see logs for the web server"
+echo "--------------------------------------------"
