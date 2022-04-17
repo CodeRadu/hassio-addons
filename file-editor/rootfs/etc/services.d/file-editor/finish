@@ -1,6 +1,0 @@
-#!/usr/bin/with-contenv bashio
-# shellcheck shell=bash
-
-bashio::log.info "Closing File Editor"
-
-rm -rf /var/run/editor.lock
