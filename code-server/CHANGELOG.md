@@ -2,6 +2,16 @@
 
 VScode in Home Assistant
 
+## [0.1.7] - 2022-06-09
+
+### `Moved`
+
+- Data from config folder to /data
+
+### `Removed`
+
+- ssh
+
 ## [0.1.6] - 2022-04-08
 
 ### `Fixed`
