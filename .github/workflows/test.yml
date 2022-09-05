@@ -16,4 +16,4 @@ jobs:
             --test \
             --all \
             --target addon-folder \
-            --docker-hub user-name-or-space-name
+            --docker-hub ${{ github.actor }}
