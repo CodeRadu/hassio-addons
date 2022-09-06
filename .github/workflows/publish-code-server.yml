@@ -25,4 +25,4 @@ jobs:
           args: |
             --all \
             --target code-server \
-            --image ${{ github.actor }}/code-server-hassio
+            --image ${{ github.actor }}/code-server-hassio-{arch}

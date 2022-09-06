@@ -29,5 +29,5 @@
   "ingress": true,
   "ingress_port": 8080,
   "panel_icon": "mdi:microsoft-visual-studio-code",
-  "image": "ghcr.io/coderadu/code-server-hassio"
+  "image": "ghcr.io/coderadu/code-server-hassio-{arch}"
 }
