@@ -1,6 +1,6 @@
 # Code Server
 
-VScode in Home Assistant
+Code server in Home Assistant
 
 ## [0.1.8] - 2022-09-06
 
