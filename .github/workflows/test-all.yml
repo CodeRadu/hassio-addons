@@ -1,9 +1,6 @@
 name: 'Test'
 
-on:
-  push:
-    paths:
-      - 'code-server/**'
+on: ['push', 'pull_request']
 
 jobs:
   build:
