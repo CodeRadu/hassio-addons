@@ -1,7 +1,7 @@
 {
   "name": "Code Server",
   "description": "VScode in Home Assistant",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "slug": "code-server",
   "arch": [
     "aarch64",
@@ -28,5 +28,6 @@
   },
   "ingress": true,
   "ingress_port": 8080,
-  "panel_icon": "mdi:microsoft-visual-studio-code"
+  "panel_icon": "mdi:microsoft-visual-studio-code",
+  "image": "ghcr.io/coderadu/code-server-hassio"
 }

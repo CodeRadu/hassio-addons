@@ -2,6 +2,12 @@
 
 VScode in Home Assistant
 
+## [0.1.8] - 2022-09-06
+
+### `Added`
+
+- copy executables
+
 ## [0.1.7] - 2022-06-09
 
 ### `Moved`
