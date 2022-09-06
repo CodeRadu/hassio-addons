@@ -21,4 +21,4 @@ jobs:
             --test \
             --all \
             --target code-server \
-            --docker-hub ${{ github.actor }}/code-server-hassio-{arch}
+            --docker-hub code-server-hassio
