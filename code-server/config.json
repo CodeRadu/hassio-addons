@@ -1,6 +1,6 @@
 {
   "name": "Code Server",
-  "description": "VScode in Home Assistant",
+  "description": "Code server in Home Assistant",
   "version": "0.1.8",
   "slug": "code-server",
   "arch": [
