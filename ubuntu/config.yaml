@@ -13,4 +13,6 @@ map:
   - backup:rw
   - addons:rw
 ports:
-  - 22:8022
+  - 22/tcp: 8022
+ports_description:
+  - 22/tcp: SSH port
