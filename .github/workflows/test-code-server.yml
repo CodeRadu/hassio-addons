@@ -1,0 +1,24 @@
+name: 'Test'
+
+on:
+  push:
+    branches: [dev]
+    paths:
+      - code-server/**
+  pull_request:
+
+jobs:
+  build:
+    name: Test build code-server
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+      - name: Test build code-server
+        uses: home-assistant/builder@master
+        with:
+          args: |
+            --test \
+            --all \
+            --target code-server \
+            --docker-hub ghcr.io/${{ github.actor }}/code-server-hassio
