@@ -18,7 +18,7 @@ RUN chmod +x /run.sh
 
 RUN chmod a+rwx /root
 
-COPY rootfs /
+COPY ./rootfs/bin /bin
 
 EXPOSE 8080
 EXPOSE 3000
