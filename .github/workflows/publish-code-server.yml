@@ -1,8 +1,10 @@
 name: Publish
 
 on:
-  release:
-    types: [published]
+  push:
+    branches: [main]
+    paths:
+      - code-server/**
 
 jobs:
   publish:
@@ -11,15 +13,16 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v3
-      - name: Login to Github container reg
+      - name: Login to Github container registry
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.DOCKER_TOKEN }}
-      - name: Publish
+      - name: Publish code-server
         uses: home-assistant/builder@master
         with:
           args: |
             --all \
-            --target addon-folder
+            --target code-server \
+            --image ghcr.io/coderadu/code-server-hassio
