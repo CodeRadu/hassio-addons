@@ -16,7 +16,7 @@ COPY code-server.yaml /
 COPY .zshrc /root
 RUN chmod +x /run.sh
 
-RUN chmod a+rwx /root
+RUN chmod a+rw /root
 
 COPY ./rootfs/bin /bin
 
