@@ -21,4 +21,4 @@ jobs:
             --test \
             --all \
             --target code-server \
-            --docker-hub ghcr.io/${{ github.actor }}/code-server-hassio
+            --docker-hub code-server-hassio
