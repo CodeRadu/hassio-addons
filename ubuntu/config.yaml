@@ -5,8 +5,6 @@ slug: ubuntu
 arch:
   - amd64
   - aarch64
-startup: application
-boot: auto
 map:
   - config:rw
   - ssl:rw
