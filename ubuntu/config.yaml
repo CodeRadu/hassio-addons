@@ -16,3 +16,4 @@ ports:
   22/tcp: 8022
 ports_description:
   22/tcp: SSH port
+image: ghcr.io/coderadu/ubuntu-hassio-{arch}

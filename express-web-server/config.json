@@ -25,5 +25,6 @@
   },
   "ports_description": {
     "80/tcp": "Port for web interface"
-  }
+  },
+  "image": "ghcr.io/coderadu/ews-hassio-{arch}"
 }
