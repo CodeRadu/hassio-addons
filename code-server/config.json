@@ -7,8 +7,6 @@
     "aarch64",
     "amd64"
   ],
-  "startup": "application",
-  "boot": "auto",
   "url": "https://github.com/CodeRadu/hassio-addons/tree/main/code-server",
   "map": [
     "config:rw",
@@ -29,5 +27,6 @@
   "ingress": true,
   "ingress_port": 8080,
   "panel_icon": "mdi:microsoft-visual-studio-code",
+  "codenotary": "radu.gabi.m@gmail.com",
   "image": "ghcr.io/coderadu/code-server-hassio-{arch}"
 }
