@@ -122,7 +122,7 @@ jobs:
             BUILD_ARCH=${{ matrix.arch }}
             BUILD_REPOSITORY=${{ github.repository }}
       - name: Notarize image
-        if: env.CAS_API_KEY != 'null'
+        if: env.CAS_API_KEY != 'null' && steps.check.outputs.build_arch == 'true'
         run: |
           if ! cas authenticate \
             --signerID ${{ secrets.CAS_SIGNER_ID }} \
@@ -134,7 +134,7 @@ jobs:
               "docker://ghcr.io/${{ github.repository_owner }}/${{ steps.check.outputs.image }}"
           fi
       - name: Push
-        if: env.BUILD_ARGS != '--test'
+        if: env.BUILD_ARGS != '--test' && steps.check.outputs.build_arch == 'true'
         run: |
           docker push ghcr.io/${{ github.repository_owner }}/${{ steps.check.outputs.image }}
       # - name: Build ${{ matrix.addon }} add-on
