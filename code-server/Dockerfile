@@ -5,7 +5,7 @@ LABEL org.opencontainers.image.source https://github.com/coderadu/hassio-addons
 
 RUN apt update
 RUN apt upgrade -y
-RUN apt install curl nano git zsh jq -y
+RUN apt install curl nano git zsh jq vim -y
 
 RUN curl -fsSL https://code-server.dev/install.sh | sh
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
