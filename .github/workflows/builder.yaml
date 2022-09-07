@@ -112,14 +112,14 @@ jobs:
             BUILD_ARCH=${{ matrix.arch }}
             BUILD_REPOSITORY=${{ github.repository }}
       - name: Notarize image
-        if: $CAS_API_KEY != 'null'
+        if: env.CAS_API_KEY != 'null'
         run: |
           if ! cas authenticate \
             --signerID ${{ steps.information.outputs.codenotary_signer }}
             "docker://ghcr.io/${{ github.repository_owner }}/${{ steps.check.outputs.image }}";
           then
             cas notarize \
-              --api-key=$CAS_API_KEY
+              --api-key=env.CAS_API_KEY
               --name ${{ steps.check.outputs.image }}
               "docker://ghcr.io/${{ github.repository_owner }}/${{ steps.check.outputs.image }}"
           fi
