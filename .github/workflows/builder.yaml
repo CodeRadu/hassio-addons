@@ -85,7 +85,7 @@ jobs:
              echo "::set-output name=build_arch::false";
           fi
       - name: Set env to staging
-        if: ! endsWith(github.ref, '/main')
+        if: endsWith(github.ref, '/dev')
         run: |
           echo "BUILD_ARGS=--test" >> $GITHUB_ENV
       - name: Login to GitHub Container Registry
