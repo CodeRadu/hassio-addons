@@ -125,7 +125,7 @@ jobs:
         if: env.CAS_API_KEY != 'null'
         run: |
           if ! cas authenticate \
-            --signerID ${{ steps.information.outputs.codenotary_signer }}
+            --signerID ${{ steps.info.outputs.codenotary_signer }}
             "docker://ghcr.io/${{ github.repository_owner }}/${{ steps.check.outputs.image }}";
           then
             cas notarize \
