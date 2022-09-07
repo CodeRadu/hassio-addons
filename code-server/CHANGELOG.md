@@ -2,6 +2,12 @@
 
 Code server in Home Assistant
 
+## [0.1.9] - 2022-09-07
+
+### `Added`
+
+- VIM preinstalled
+
 ## [0.1.8] - 2022-09-06
 
 ### `Added`

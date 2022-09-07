@@ -2,12 +2,11 @@ name: Builder
 
 env:
   BUILD_ARGS: ''
-  MONITORED_FILES: 'build.yaml config.yaml Dockerfile rootfs'
+  MONITORED_FILES: 'build.yaml config.yaml Dockerfile rootfs config.json'
+  CAS_API_KEY: ${{ secrets.CAS_TOKEN }}
 
 on:
   push:
-    branches:
-      - main
 
 jobs:
   init:
@@ -86,7 +85,18 @@ jobs:
              echo "${{ matrix.arch }} is not a valid arch for ${{ matrix.addon }}, skipping build";
              echo "::set-output name=build_arch::false";
           fi
-
+      - name: 🏗 Set up QEMU
+        uses: docker/setup-qemu-action@v2.0.0
+      - name: 🏗 Set up Codenotary Community Attestation Service (CAS)
+        uses: frenck/action-setup-cas@v0.1.0
+      - name: Log in to CAS
+        if: env.CAS_API_KEY != 'null'
+        run: |
+          cas login
+      - name: Set env to staging
+        if: endsWith(github.ref, '/dev')
+        run: |
+          echo "BUILD_ARGS=--test" >> $GITHUB_ENV
       - name: Login to GitHub Container Registry
         if: env.BUILD_ARGS != '--test'
         uses: docker/login-action@v2.0.0
@@ -94,17 +104,53 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Build ${{ matrix.addon }} add-on
-        if: steps.check.outputs.build_arch == 'true'
-        uses: home-assistant/builder@2022.07.0
+      - name: Replace {arch} with ${{ matrix.arch }}
+        run: |
+          original=${{ steps.check.outputs.image }}
+          img=$(echo "${original//\{arch\}/${{ matrix.arch }}}")
+          echo "IMAGE=${img,,}" >> $GITHUB_ENV
+          echo "OWNER_LC=${OWNER,,}" >> $GITHUB_ENV
         env:
-          CAS_API_KEY: ${{ secrets.CAS_API_KEY }}
+          OWNER: '${{ github.repository_owner }}'
+      - name: Build ${{ matrix.addon }} add-on for ${{ matrix.arch }}
+        if: steps.check.outputs.build_arch == 'true'
+        uses: docker/build-push-action@v3.1.1
         with:
-          args: |
-            ${{ env.BUILD_ARGS }} \
-            --${{ matrix.arch }} \
-            --target /data/${{ matrix.addon }} \
-            --image "${{ steps.check.outputs.image }}" \
-            --docker-hub "ghcr.io/${{ github.repository_owner }}" \
-            --addon
+          load: true
+          tags: |
+            ghcr.io/${{ env.OWNER_LC }}/${{ env.IMAGE }}
+          context: ./${{ matrix.addon }}
+          file: ./${{ matrix.addon }}/Dockerfile
+          platforms: ${{ matrix.arch }}
+          build-args: |
+            BUILD_ARCH=${{ matrix.arch }}
+            BUILD_REPOSITORY=${{ github.repository }}
+      - name: Notarize image
+        if: env.CAS_API_KEY != 'null' && steps.check.outputs.build_arch == 'true'
+        run: |
+          if ! cas authenticate \
+            --signerID ${{ secrets.CAS_SIGNER_ID }} \
+            "docker://ghcr.io/${{ env.OWNER_LC }}/${{ env.IMAGE }}";
+          then
+            cas notarize \
+              --api-key=${{ env.CAS_API_KEY }} \
+              --name ${{ env.IMAGE }} \
+              "docker://ghcr.io/${{ env.OWNER_LC }}/${{ env.IMAGE }}"
+          fi
+      - name: Push
+        if: env.BUILD_ARGS != '--test' && steps.check.outputs.build_arch == 'true'
+        run: |
+          docker push ghcr.io/${{ env.OWNER_LC }}/${{ env.IMAGE }}
+      # - name: Build ${{ matrix.addon }} add-on
+      #   if: steps.check.outputs.build_arch == 'true'
+      #   uses: home-assistant/builder@2022.07.0
+      #   with:
+      #     args: |
+      #       ${{ env.BUILD_ARGS }} \
+      #       --${{ matrix.arch }} \
+      #       --target /data/${{ matrix.addon }} \
+      #       --image "${{ steps.check.outputs.image }}" \
+      #       --docker-hub "ghcr.io/${{ github.repository_owner }}" \
+      #       --addon
+      #   env:
+      #     CAS_API_KEY: ${{ secrets.CAS_TOKEN }}
