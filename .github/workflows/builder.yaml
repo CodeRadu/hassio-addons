@@ -123,10 +123,10 @@ jobs:
               --name ${{ steps.check.outputs.image }}
               "docker://ghcr.io/${{ github.repository_owner }}/${{ steps.check.outputs.image }}"
           fi
-        - name: Push
-          if: env.BUILD_ARGS != '--test'
-          run: |
-            docker push ghcr.io/${{ github.repository_owner }}/${{ steps.check.outputs.image }}
+      - name: Push
+        if: env.BUILD_ARGS != '--test'
+        run: |
+          docker push ghcr.io/${{ github.repository_owner }}/${{ steps.check.outputs.image }}
       # - name: Build ${{ matrix.addon }} add-on
       #   if: steps.check.outputs.build_arch == 'true'
       #   uses: home-assistant/builder@2022.07.0
