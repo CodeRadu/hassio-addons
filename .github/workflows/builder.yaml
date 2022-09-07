@@ -100,7 +100,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Replace {arch} with ${{ matrix.arch }}
         run: |
-          echo "$IMAGE=${${{ steps.check.outputs.image }}//{arch}/${{ matrix.arch }}" >> $GITHUB_ENV
+          echo "IMAGE=${${{ steps.check.outputs.image }}//{arch}/${{ matrix.arch }}" >> $GITHUB_ENV
       - name: Build ${{ matrix.addon }} add-on for ${{ matrix.arch }}
         if: steps.check.outputs.build_arch == 'true'
         uses: docker/build-push-action@v3.1.1
