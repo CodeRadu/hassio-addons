@@ -107,7 +107,7 @@ jobs:
             ghcr.io/${{ github.repository_owner }}/${{ steps.check.outputs.image }}
           context: /data/${{ matrix.addon }}
           file: /data/${{ matrix.addon }}/Dockerfile
-          platform: linux/${{ matrix.arch }}
+          platform: linux/${{ steps.info.outputs.architectures }}
       - name: Notarize image
         if: $CAS_API_KEY != 'null'
         run: |
