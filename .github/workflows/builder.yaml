@@ -134,13 +134,13 @@ jobs:
           then
             cas notarize \
               --api-key=${{ env.CAS_API_KEY }} \
-              --name ${{ steps.check.outputs.image }} \
+              --name ${{ env.IMAGE }} \
               "docker://ghcr.io/${{ env.OWNER_LC }}/${{ env.IMAGE }}"
           fi
       - name: Push
         if: env.BUILD_ARGS != '--test' && steps.check.outputs.build_arch == 'true'
         run: |
-          docker push ghcr.io/${{ github.repository_owner }}/${{ steps.check.outputs.image }}
+          docker push ghcr.io/${{ env.OWNER_LC }}/${{ env.IMAGE }}
       # - name: Build ${{ matrix.addon }} add-on
       #   if: steps.check.outputs.build_arch == 'true'
       #   uses: home-assistant/builder@2022.07.0
