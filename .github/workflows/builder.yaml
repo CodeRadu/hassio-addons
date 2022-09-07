@@ -101,8 +101,8 @@ jobs:
       - name: Replace {arch} with ${{ matrix.arch }}
         run: |
           original=${{ steps.check.outputs.image }}
-          img=$(echo "${original//\{arch\}/${{ matrix.arch }}}" | tr '[:upper:]' '[:lower:]')
-          echo "IMAGE=$img" >> $GITHUB_ENV
+          img=$(echo "${original//\{arch\}/${{ matrix.arch }}}")
+          echo "IMAGE=${img,,}" >> $GITHUB_ENV
       - name: Build ${{ matrix.addon }} add-on for ${{ matrix.arch }}
         if: steps.check.outputs.build_arch == 'true'
         uses: docker/build-push-action@v3.1.1
