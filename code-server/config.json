@@ -1,7 +1,7 @@
 {
   "name": "Code Server",
   "description": "Code server in Home Assistant",
-  "version": "0.1.95",
+  "version": "0.1.96",
   "slug": "code-server",
   "arch": [
     "aarch64",
@@ -21,7 +21,7 @@
     "3000/tcp": null
   },
   "ports_description": {
-    "8080/tcp": "Web interface. Not required for ingress",
+    "8080/tcp": "Web interface. Not required when using ingress",
     "3000/tcp": "For web development"
   },
   "ingress": true,

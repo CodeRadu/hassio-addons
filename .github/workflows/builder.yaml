@@ -85,6 +85,11 @@ jobs:
              echo "${{ matrix.arch }} is not a valid arch for ${{ matrix.addon }}, skipping build";
              echo "::set-output name=build_arch::false";
           fi
+      - name: Get addon information
+        id: information
+        uses: frenck/action-addon-information@v1
+        with:
+          path: ./${{ matrix.addon }}
       - name: 🏗 Set up QEMU
         uses: docker/setup-qemu-action@v2.0.0
       - name: 🏗 Set up Codenotary Community Attestation Service (CAS)
@@ -118,7 +123,7 @@ jobs:
         with:
           load: true
           tags: |
-            ghcr.io/${{ env.OWNER_LC }}/${{ env.IMAGE }}
+            ghcr.io/${{ env.OWNER_LC }}/${{ env.IMAGE }}:${{ steps.information.outputs.version }}
           context: ./${{ matrix.addon }}
           file: ./${{ matrix.addon }}/Dockerfile
           platforms: ${{ matrix.arch }}
@@ -130,17 +135,17 @@ jobs:
         run: |
           if ! cas authenticate \
             --signerID ${{ secrets.CAS_SIGNER_ID }} \
-            "docker://ghcr.io/${{ env.OWNER_LC }}/${{ env.IMAGE }}";
+            "docker://ghcr.io/${{ env.OWNER_LC }}/${{ env.IMAGE }}:${{ steps.information.outputs.version }}";
           then
             cas notarize \
               --api-key=${{ env.CAS_API_KEY }} \
               --name ${{ env.IMAGE }} \
-              "docker://ghcr.io/${{ env.OWNER_LC }}/${{ env.IMAGE }}"
+              "docker://ghcr.io/${{ env.OWNER_LC }}/${{ env.IMAGE }}:${{ steps.information.outputs.version }}"
           fi
       - name: Push
         if: env.BUILD_ARGS != '--test' && steps.check.outputs.build_arch == 'true'
         run: |
-          docker push ghcr.io/${{ env.OWNER_LC }}/${{ env.IMAGE }}
+          docker push ghcr.io/${{ env.OWNER_LC }}/${{ env.IMAGE }}:${{ steps.information.outputs.version }}
       # - name: Build ${{ matrix.addon }} add-on
       #   if: steps.check.outputs.build_arch == 'true'
       #   uses: home-assistant/builder@2022.07.0
