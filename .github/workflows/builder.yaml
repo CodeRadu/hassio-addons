@@ -125,12 +125,12 @@ jobs:
         if: env.CAS_API_KEY != 'null'
         run: |
           if ! cas authenticate \
-            --signerID ${{ secrets.CAS_SIGNER_ID }}
+            --signerID ${{ secrets.CAS_SIGNER_ID }} \
             "docker://ghcr.io/${{ github.repository_owner }}/${{ steps.check.outputs.image }}";
           then
             cas notarize \
-              --api-key=env.CAS_API_KEY
-              --name ${{ steps.check.outputs.image }}
+              --api-key=env.CAS_API_KEY \
+              --name ${{ steps.check.outputs.image }} \
               "docker://ghcr.io/${{ github.repository_owner }}/${{ steps.check.outputs.image }}"
           fi
       - name: Push
