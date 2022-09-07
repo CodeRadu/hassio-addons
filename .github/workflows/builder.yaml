@@ -107,7 +107,7 @@ jobs:
             ghcr.io/${{ github.repository_owner }}/${{ steps.check.outputs.image }}
           context: /data/${{ matrix.addon }}
           file: /data/${{ matrix.addon }}/Dockerfile
-          platform: ${{ matrix.arch }}
+          platforms: ${{ matrix.arch }}
           build-args: |
             BUILD_ARCH=${{ matrix.arch }}
             BUILD_REPOSITORY=${{ github.repository }}
