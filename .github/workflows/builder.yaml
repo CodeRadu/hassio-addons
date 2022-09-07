@@ -100,7 +100,8 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Replace {arch} with ${{ matrix.arch }}
         run: |
-          img=$(echo "${${{ steps.check.outputs.image }}//{arch}/${{ matrix.arch }}")
+          original=${{ steps.check.outputs.image }}
+          img=$(echo "${original//\{arch\}/${{ matrix.arch }}}")
           echo "IMAGE=$img" >> $GITHUB_ENV
       - name: Build ${{ matrix.addon }} add-on for ${{ matrix.arch }}
         if: steps.check.outputs.build_arch == 'true'
