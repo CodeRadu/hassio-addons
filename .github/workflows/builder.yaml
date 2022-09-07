@@ -113,8 +113,8 @@ jobs:
           load: true
           tags: |
             ghcr.io/${{ env.OWNER_LC }}/${{ env.IMAGE }}
-          context: /data/${{ matrix.addon }}
-          file: /data/${{ matrix.addon }}/Dockerfile
+          context: ./${{ matrix.addon }}
+          file: ./${{ matrix.addon }}/Dockerfile
           platforms: ${{ matrix.arch }}
           build-args: |
             BUILD_ARCH=${{ matrix.arch }}
