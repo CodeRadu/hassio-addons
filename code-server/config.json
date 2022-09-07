@@ -1,7 +1,7 @@
 {
   "name": "Code Server",
   "description": "Code server in Home Assistant",
-  "version": "0.1.9-dev-10",
+  "version": "0.1.9-dev-11-last-hope",
   "slug": "code-server",
   "arch": [
     "aarch64",

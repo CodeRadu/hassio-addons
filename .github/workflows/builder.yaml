@@ -103,13 +103,16 @@ jobs:
           original=${{ steps.check.outputs.image }}
           img=$(echo "${original//\{arch\}/${{ matrix.arch }}}")
           echo "IMAGE=${img,,}" >> $GITHUB_ENV
+          echo "OWNER_LC=${OWNER,,}" >> $GITHUB_ENV
+        env:
+          OWNER: '${{ github.repository_owner }}'
       - name: Build ${{ matrix.addon }} add-on for ${{ matrix.arch }}
         if: steps.check.outputs.build_arch == 'true'
         uses: docker/build-push-action@v3.1.1
         with:
           load: true
           tags: |
-            ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE }}
+            ghcr.io/${{ env.OWNER_LC }}/${{ env.IMAGE }}
           context: /data/${{ matrix.addon }}
           file: /data/${{ matrix.addon }}/Dockerfile
           platforms: ${{ matrix.arch }}
