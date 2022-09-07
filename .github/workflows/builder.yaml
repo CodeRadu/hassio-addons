@@ -89,6 +89,10 @@ jobs:
         uses: docker/setup-qemu-action@v2.0.0
       - name: 🏗 Set up Codenotary Community Attestation Service (CAS)
         uses: frenck/action-setup-cas@v0.1.0
+      - name: Log in to CAS
+        if: env.CAS_API_KEY != 'null'
+        run: |
+          cas login
       - name: Set env to staging
         if: endsWith(github.ref, '/dev')
         run: |
@@ -129,7 +133,7 @@ jobs:
             "docker://ghcr.io/${{ github.repository_owner }}/${{ steps.check.outputs.image }}";
           then
             cas notarize \
-              --api-key=env.CAS_API_KEY \
+              --api-key=${{ env.CAS_API_KEY }} \
               --name ${{ steps.check.outputs.image }} \
               "docker://ghcr.io/${{ github.repository_owner }}/${{ steps.check.outputs.image }}"
           fi
