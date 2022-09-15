@@ -1,0 +1,24 @@
+name: Ubuntu
+description: Basic ubuntu os in Home Assistant
+version: 1.0.0
+slug: ubuntu
+arch:
+  - aarch64
+  - amd64
+map:
+  - config:rw
+  - ssl:rw
+  - share:rw
+  - media:rw
+  - backup:rw
+  - addons:rw
+ports:
+  3000/tcp: null
+ports_description:
+  3000/tcp: Port for anything
+ingress: true
+ingress_port: 3000
+panel_icon: mdi:ubuntu
+init: false
+image: 'ghcr.io/coderadu/ubuntu-hassio-{arch}'
+codenotary: radu.gabi.m@gmail.com
