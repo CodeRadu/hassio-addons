@@ -117,6 +117,11 @@ jobs:
           echo "OWNER_LC=${OWNER,,}" >> $GITHUB_ENV
         env:
           OWNER: '${{ github.repository_owner }}'
+      - name: Set flags
+        id: flags
+        run: |
+          from=$(yq --no-colors eval ".build_from.${{ matrix.arch }}" "${{ steps.information.outputs.build }}")
+          echo "::set-output name=from::${from}"
       - name: Build ${{ matrix.addon }} add-on for ${{ matrix.arch }}
         if: steps.check.outputs.build_arch == 'true'
         uses: docker/build-push-action@v3.1.1
@@ -130,6 +135,7 @@ jobs:
           build-args: |
             BUILD_ARCH=${{ matrix.arch }}
             BUILD_REPOSITORY=${{ github.repository }}
+            BUILD_FROM=${{ steps.flags.outputs.from }}
       - name: Notarize image
         if: env.CAS_API_KEY != 'null' && steps.check.outputs.build_arch == 'true'
         run: |

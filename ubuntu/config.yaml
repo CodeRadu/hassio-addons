@@ -15,7 +15,7 @@ map:
 ports:
   3000/tcp: null
 ports_description:
-  3000/tcp: Basic port
+  3000/tcp: Port for anything
 ingress: true
 ingress_port: 3000
 panel_icon: mdi:ubuntu
