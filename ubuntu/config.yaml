@@ -1,6 +1,6 @@
 name: Ubuntu
 description: Basic ubuntu os in Home Assistant
-version: 1.0.0
+version: 1.0.0-fix2
 slug: ubuntu
 arch:
   - aarch64
