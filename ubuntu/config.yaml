@@ -1,6 +1,6 @@
 name: Ubuntu
 description: Basic ubuntu os in Home Assistant
-version: 1.0.0-fix2
+version: 2022.09.24
 slug: ubuntu
 arch:
   - aarch64
@@ -20,5 +20,12 @@ ingress: true
 ingress_port: 3000
 panel_icon: mdi:ubuntu
 init: false
-image: 'ghcr.io/coderadu/ubuntu-hassio-{arch}'
+image: "ghcr.io/coderadu/ubuntu-hassio-{arch}"
 codenotary: radu.gabi.m@gmail.com
+schema:
+  packages:
+    - str?
+options:
+  packages: []
+backup_exclude:
+  - /data/packages
