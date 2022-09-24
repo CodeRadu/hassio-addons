@@ -1,6 +1,6 @@
 name: Ubuntu
 description: Basic ubuntu os in Home Assistant
-version: 2022.09.24
+version: 2022.09.24.1
 slug: ubuntu
 arch:
   - aarch64
@@ -24,7 +24,8 @@ image: "ghcr.io/coderadu/ubuntu-hassio-{arch}"
 codenotary: radu.gabi.m@gmail.com
 schema:
   packages:
-    - str?
+    - name: str
+      version: str
 options:
   packages: []
 backup_exclude:
