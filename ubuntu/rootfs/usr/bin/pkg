@@ -1,0 +1,32 @@
+#! /usr/bin/with-contenv bashio
+# shellcheck shell=bash
+
+REPO="https://raw.githubusercontent.com/coderadu/hassio-ubuntu-packages/main"
+
+COMMAND=$1
+
+if [ "$COMMAND" == "install" ]; then
+  NAME=$2
+  VERSION=$3 || "latest"
+  if [ "$VERSION" == "latest" ]; then
+    VERSION=$(curl -o- "$REPO/$NAME/latest")
+  fi
+  ARCH=$(dpkg --print-architecture)
+  if [ -d "/data/packages/$NAME" ]; then
+    INSTALLED_VERSION=$(cat "/data/packages/$NAME/pkg_version") || "0"
+  else
+    INSTALLED_VERSION="0"
+  fi
+  INSTALLED_VERSION="0"
+  if [ ! "$VERSION" == "$INSTALLED_VERSION" ]; then
+    rm -rf "/data/packages/$NAME"
+    bashio::log.info "Install $NAME version $VERSION"
+    mkdir -p "/data/packages/$NAME"
+    wget "$REPO/$NAME/$NAME-$VERSION-$ARCH.tar" -O /tmp/package.tar
+    tar -xf /tmp/package.tar -C "/data/packages/$NAME"
+    rm /tmp/package.tar
+    echo "$VERSION" > "/data/packages/$NAME/pkg_version"
+    bash "/data/packages/$NAME/postinstall.sh"
+    bashio::log.info "$NAME successfully installed"
+  fi
+fi

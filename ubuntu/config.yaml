@@ -20,7 +20,7 @@ ingress: true
 ingress_port: 3000
 panel_icon: mdi:ubuntu
 init: false
-image: "ghcr.io/coderadu/ubuntu-hassio-{arch}"
+# image: "ghcr.io/coderadu/ubuntu-hassio-{arch}"
 codenotary: radu.gabi.m@gmail.com
 schema:
   packages:
