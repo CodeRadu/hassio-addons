@@ -1,0 +1,22 @@
+name: Minecraft server
+description: Run your own minecraft server in Home assistant
+version: 2022.10.16
+slug: mc-server
+arch:
+  - amd64
+  - aarch64
+map:
+  - config:rw
+ports:
+  25565/tcp: 25565
+  22/tcp: 2022
+  1234/tcp: 1234
+ports_description:
+  25565/tcp: Minecraft server
+  22/tcp: SSH and SCP access
+  1234/tcp: MCpanel interface
+schema:
+  ssh_password: password
+init: false
+codenotary: radu.gabi.m@gmail.com
+image: ghcr.io/coderadu/mc-server-hassio-{arch}
