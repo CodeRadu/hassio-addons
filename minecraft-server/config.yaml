@@ -15,7 +15,6 @@ ports_description:
   25565/tcp: Minecraft server
   22/tcp: SSH and SCP access
   1234/tcp: MCpanel interface
-config:
 schema:
   ssh_password: password
 init: false
