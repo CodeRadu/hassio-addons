@@ -1,0 +1,6 @@
+#! /usr/bin/with-contenv bashio
+# shellcheck shell=bash
+
+cd /mcpanel || exit
+bashio::log.info "Staring MCpanel"
+node server.js

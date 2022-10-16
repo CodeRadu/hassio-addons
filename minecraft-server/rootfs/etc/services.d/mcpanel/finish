@@ -1,0 +1,5 @@
+#! /usr/bin/with-contenv bashio
+# shellcheck shell=bash
+bashio::log.info "MCpanel stopped. Halting.."
+/run/s6/basedir/bin/halt
+sleep 5
