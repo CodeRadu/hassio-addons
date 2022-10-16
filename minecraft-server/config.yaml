@@ -1,6 +1,6 @@
 name: Minecraft server
 description: Run your own minecraft server in Home assistant
-version: 0.1.0
+version: 2022.10.16
 slug: mc-server
 arch:
   - amd64
