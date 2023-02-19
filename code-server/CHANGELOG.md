@@ -2,6 +2,12 @@
 
 Code server in Home Assistant
 
+## [0.2.0] - 2023-02-19
+
+### `Moved`
+
+- /config/code-server/local to /data/local
+
 ## [0.1.9] - 2022-09-07
 
 ### `Added`

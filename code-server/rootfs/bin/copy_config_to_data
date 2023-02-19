@@ -1,5 +1,5 @@
 #! /usr/bin/bash
 
 echo Copying /config/code-server to /root/data
-cp /config/code-server/* /root/data
+cp -r /config/code-server/* /root/data
 echo Done

@@ -1,9 +1,17 @@
 {
   "name": "hassio-addons dev container",
   "image": "ghcr.io/coderadu/hass-devcontainer/addons",
-  "appPort": ["7123:8123", "7357:4357", "8080:8080"],
+  "appPort": [
+    "7123:8123",
+    "7357:4357",
+    "8080:8080"
+  ],
   "postStartCommand": "bash devcontainer_bootstrap",
-  "runArgs": ["-e", "GIT_EDITOR=code --wait", "--privileged"],
+  "runArgs": [
+    "-e",
+    "GIT_EDITOR=code --wait",
+    "--privileged"
+  ],
   "containerEnv": {
     "WORKSPACE_DIRECTORY": "${containerWorkspaceFolder}"
   },
@@ -12,7 +20,9 @@
     "esbenp.prettier-vscode",
     "ms-azuretools.vscode-docker"
   ],
-  "mounts": ["type=volume,target=/var/lib/docker"],
+  "mounts": [
+    "type=volume,target=/var/lib/docker"
+  ],
   "settings": {
     "terminal.integrated.profiles.linux": {
       "zsh": {

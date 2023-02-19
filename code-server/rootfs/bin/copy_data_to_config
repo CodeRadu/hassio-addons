@@ -2,5 +2,5 @@
 
 echo Copying /root/data to /config/code-server
 mkdir -p /config/code-server
-cp /root/data/* /config/code-server
+cp -r /root/data/* /config/code-server
 echo Done
