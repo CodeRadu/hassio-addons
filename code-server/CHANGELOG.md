@@ -2,6 +2,20 @@
 
 Code server in Home Assistant
 
+## [1.0.0] - 2023-02-19
+
+### `Changed`
+
+- Now using s6-overlay
+
+### `Added`
+
+- Nix package manager (packages survive a restart)
+
+### `Removed`
+
+- Node version manager (nodejs can be installed with `nix-env -iA nixpkgs.nodejs`)
+
 ## [0.2.0] - 2023-02-19
 
 ### `Moved`

@@ -1,7 +1,7 @@
 {
   "name": "Code Server",
   "description": "Code server in Home Assistant",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "slug": "code-server",
   "arch": [
     "aarch64",
@@ -27,6 +27,10 @@
   "ingress": true,
   "ingress_port": 8080,
   "panel_icon": "mdi:microsoft-visual-studio-code",
+  "init": false,
+  "privileged": [
+    "SYS_ADMIN"
+  ],
   "codenotary": "radu.gabi.m@gmail.com",
   "image": "ghcr.io/coderadu/code-server-hassio-{arch}"
 }

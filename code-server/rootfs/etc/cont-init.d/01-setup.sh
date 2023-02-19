@@ -1,9 +1,9 @@
-#!/usr/bin/bash
+#! /usr/bin/bash
 
 mkdir -p /root/.local/share
 mkdir -p /root/.config
-mkdir -p /config/code-server/local
 mkdir -p /config/code-server/config
+mkdir -p /data/local
 mkdir -p /data/files
 
 if ! test -f /config/code-server/config/config.yaml; then
@@ -33,5 +33,3 @@ fi
 
 chmod a+rwx /root/*
 chmod a+rwx /data/files
-
-code-server
